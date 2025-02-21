@@ -6,11 +6,11 @@
 /*   By: dedme <dedme@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 22:37:51 by dedme             #+#    #+#             */
-/*   Updated: 2025/02/20 23:04:42 by dedme            ###   ########.fr       */
+/*   Updated: 2025/02/21 17:20:54 by dedme            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solong.h"
+#include "so_long.h"
 
 int	open_file(char *path_file)
 {
@@ -141,9 +141,30 @@ char	**ft_split(char *str, char sep)
 	return (tab);
 }
 
-int	*ft_spawnpoint(int *inf, char **tab)
+void	ft_spawnpoint(int *inf, char **tab)
 {
-	
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
+	while (tab[y])
+	{
+		printf("tab[%d] = %s\n", y, tab[y]);
+		while (tab[y][x])
+		{
+			printf("tab[%d][%d] = %c\n", y, x, tab[y][x]);
+			if (tab[y][x] == 'E')
+			{
+				inf[0] = x;
+				inf[1] = y;
+				return ;
+			}
+			x++;
+		}
+		x = 0;
+		y++;
+	}
 }
 
 int main(int argc, char **argv)
@@ -163,7 +184,6 @@ int main(int argc, char **argv)
 	read_file(argv[1], buf, file_len - 1);
 	printf("buf = %s\n\n", buf);
 	tab = ft_split(buf, '\n');
-	ft_spawnpoint(&inf, tab);
-	
-	ft_verif();
+	ft_spawnpoint(&inf[0], tab);
+	printf("x = %d\ny = %d\n", inf[0], inf[1]);
 }
