@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_info.c                                         :+:      :+:    :+:   */
+/*   window_ft.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dedme <dedme@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/21 19:54:13 by dedme             #+#    #+#             */
-/*   Updated: 2025/02/27 02:00:34 by dedme            ###   ########.fr       */
+/*   Created: 2025/02/27 00:24:25 by dedme             #+#    #+#             */
+/*   Updated: 2025/02/27 00:43:14 by dedme            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	ft_spawnpoint(int *spawnpoint, char **maps)
+int close_window(t_data *data)
 {
-	int	x;
-	int	y;
+	mlx_destroy_image(data->mlx, data->all_img.sprite.img);
+	mlx_destroy_image(data->mlx, data->all_img.background.img);
+    mlx_loop_end(data->mlx);
+	return (0);
+}
 
-	x = 0;
-	y = 0;
-	while (maps[y])
-	{
-		while (maps[y][x])
-		{
-			if (maps[y][x] == 'E')
-			{
-				spawnpoint[0] = x;
-				spawnpoint[1] = y;
-				return ;
-			}
-			x++;
-		}
-		x = 0;
-		y++;
-	}
+int	windows_init(t_data *data, int *xy)
+{
+	data->mlx = mlx_init();
+	data->win = mlx_new_window(data->mlx, 1920, 1080, "Hello world!");
+	ft_load_text(data);
+	ft_put_sprite(xy, data);
+	return (0);
 }

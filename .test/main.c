@@ -5,28 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dedme <dedme@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/25 19:43:09 by dedme             #+#    #+#             */
-/*   Updated: 2025/02/27 01:59:58 by dedme            ###   ########.fr       */
+/*   Created: 2025/02/20 22:37:51 by dedme             #+#    #+#             */
+/*   Updated: 2025/02/24 01:09:28 by dedme            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
-int	main(int	argc, char **argv)
+int main(int argc, char **argv)
 {
-	t_data	data;
-	static int		xy[2];
-
-	if (argc != 2)
-		return (1);
-	data.map_info.map_name = argv[1];
-	ft_map_read(&data);
-	windows_init(&data, xy);
-	mlx_hook(data.win, 2, 1L<<0, ft_move, &data);
-	mlx_hook(data.win, 17, 0, close_window, &data);
-	mlx_loop(data.mlx);
-	mlx_destroy_window(data.mlx, data.win);
-	mlx_destroy_display(data.mlx);
-	free(data.mlx);
-    return (0);
+	char 	*buf;
+	int 	file_len;
+	char	**tab;
+	int		i;
+	int		inf[4];
+	
+	if (argc < 2)
+		return (0);
+	i = 0;
+	buf = NULL;
+	file_len = get_file_len(argv[1]);
+	buf = malloc(sizeof(char) * file_len + 1);
+	read_file(argv[1], buf, file_len - 1);
+	printf("buf = %s\n\n", buf);
+	tab = ft_split(buf, '\n');
+	ft_spawnpoint(&inf[0], tab);
+	printf("x = %d\ny = %d\n", inf[0], inf[1]);
 }

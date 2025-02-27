@@ -1,37 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_info.c                                         :+:      :+:    :+:   */
+/*   background_ft.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dedme <dedme@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/21 19:54:13 by dedme             #+#    #+#             */
-/*   Updated: 2025/02/27 02:00:34 by dedme            ###   ########.fr       */
+/*   Created: 2025/02/27 00:41:32 by dedme             #+#    #+#             */
+/*   Updated: 2025/02/27 00:41:44 by dedme            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	ft_spawnpoint(int *spawnpoint, char **maps)
+int	ft_clear_screen(t_data *data)
 {
-	int	x;
-	int	y;
-
-	x = 0;
-	y = 0;
-	while (maps[y])
-	{
-		while (maps[y][x])
-		{
-			if (maps[y][x] == 'E')
-			{
-				spawnpoint[0] = x;
-				spawnpoint[1] = y;
-				return ;
-			}
-			x++;
-		}
-		x = 0;
-		y++;
-	}
+	mlx_put_image_to_window(data->mlx, data->win, data->all_img.background.img, 0, 0);
+	return (0);
 }
