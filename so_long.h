@@ -6,7 +6,7 @@
 /*   By: dedme <dedme@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 16:21:42 by dedme             #+#    #+#             */
-/*   Updated: 2025/02/27 01:56:52 by dedme            ###   ########.fr       */
+/*   Updated: 2025/02/27 22:03:30 by dedme            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ typedef struct s_text {
 typedef struct s_all_text {
 	t_text background;
 	t_text sprite;
+	t_text wall;
+	t_text exit;
 }				t_all_text;
 
 typedef struct	s_data {
