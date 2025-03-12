@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Werror -Wextra -Wall -g
+CFLAGS = -Werror -Wextra -Wall -g3
 MLX_FLAGS = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
 NAME = so_long
@@ -14,7 +14,8 @@ SRC = \
 	map_read/get_info.c \
 	map_read/map_read.c \
 	map_read/read_map_from_file.c \
-	utils/ft_split.c
+	utils/parse_utils.c \
+	utils/char_utils.c
 
 OBJ = $(SRC:.c=.o)
 

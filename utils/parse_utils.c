@@ -6,7 +6,7 @@
 /*   By: dedme <dedme@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 19:52:00 by dedme             #+#    #+#             */
-/*   Updated: 2025/02/21 19:52:18 by dedme            ###   ########.fr       */
+/*   Updated: 2025/03/12 05:28:36 by dedme            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 char	*ft_strdup(char *str)
 {
-	char	*dup;
+	char	*buf;
 	int		i;
 
 	i = 0;
-	dup = malloc(sizeof(char) * ft_strlen(str) + 1);
-	if (dup == NULL)
+	buf = malloc(sizeof(char) * ft_strlen(str) + 1);
+	if (buf == NULL)
 		return (NULL);
 	while (str[i] && str[i] != '\n')
 	{
-		dup[i] = str[i];
+		buf[i] = str[i];
 		i++;
 	}
-	dup[i] = '\0';
-	return (dup);
+	buf[i] = '\0';
+	return (buf);
 }
 
 char	**ft_split(char *str, char sep)
@@ -38,7 +38,7 @@ char	**ft_split(char *str, char sep)
 
 	i = 0;
 	j = 0;
-	tab = malloc(sizeof(tab) * ft_chain_calc(str, sep) + 1);
+	tab = malloc(sizeof(char *) * (ft_chain_calc(str, sep) + 1));
 	if (tab == NULL)
 		return (NULL);
 	tab[j++] = ft_strdup(str);

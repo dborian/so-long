@@ -1,21 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sprite_ft.c                                        :+:      :+:    :+:   */
+/*   char_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dedme <dedme@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/27 00:40:17 by dedme             #+#    #+#             */
-/*   Updated: 2025/03/12 06:28:59 by dedme            ###   ########.fr       */
+/*   Created: 2025/03/12 05:41:53 by dedme             #+#    #+#             */
+/*   Updated: 2025/03/12 05:48:09 by dedme            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	ft_put_sprite(t_data *data)
+static void	ft_putchar(char c)
 {
-	ft_clear_screen(data);
-	mlx_put_image_to_window(data->mlx, data->win, data->all_img.sprite.img, \
-	data->player.xy[0] * 64, data->player.xy[1] * 64);
-	return (0);
+	write(1, &c, 1);
+}
+
+void	ft_putnbr(int nb)
+{
+	int				tab[10];
+	unsigned int	nbr;
+
+	nbr = nb;
+	if (nb == 0)
+		ft_putchar(48);
+	nb = -1;
+	while (nbr != 0)
+	{
+		tab[++nb] = nbr % 10;
+		nbr = nbr / 10;
+	}
+	while (nb >= 0)
+		ft_putchar(tab[nb--] + 48);
+	ft_putchar('\n');
 }
