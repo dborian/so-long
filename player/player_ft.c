@@ -6,11 +6,11 @@
 /*   By: dedme <dedme@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 00:47:21 by dedme             #+#    #+#             */
-/*   Updated: 2025/03/12 07:14:57 by dedme            ###   ########.fr       */
+/*   Updated: 2025/03/18 04:59:10 by dedme            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 static int	ft_choose_move(int keycode, t_data *data)
 {
