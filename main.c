@@ -6,7 +6,7 @@
 /*   By: dedme <dedme@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 19:43:09 by dedme             #+#    #+#             */
-/*   Updated: 2025/03/12 06:25:13 by dedme            ###   ########.fr       */
+/*   Updated: 2025/03/18 11:15:05 by dedme            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,11 @@ int	main(int argc, char **argv)
 	data.player.obj = 0;
 	data.player.mouv_count = 0;
 	data.map_info.map_name = argv[1];
-	ft_map_read(&data);
+	if (ft_map_read(&data) == 1)
+	{
+		write(1, "MAP ERROR\n", 11);
+		return (1);
+	}
 	data.player.xy[0] = data.map_info.spawnpoint[0];
 	data.player.xy[1] = data.map_info.spawnpoint[1];
 	windows_init(&data);

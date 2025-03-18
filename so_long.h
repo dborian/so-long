@@ -6,7 +6,7 @@
 /*   By: dedme <dedme@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 16:21:42 by dedme             #+#    #+#             */
-/*   Updated: 2025/03/12 06:23:10 by dedme            ###   ########.fr       */
+/*   Updated: 2025/03/18 11:14:39 by dedme            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@
 #  define Y 0
 # endif
 
+typedef struct s_check
+{
+	int	exit;
+	int	spawn;
+	int	obj;
+}				t_check;
+
 typedef struct s_map
 {
 	char	*map_name;
@@ -34,7 +41,7 @@ typedef struct s_map
 	int		widht;
 	int		spawnpoint[2];
 	int		exitpoint[2];
-	int		objpoint[2];
+	int		obj;
 	char	**maps;
 }				t_map;
 
@@ -84,9 +91,9 @@ int		windows_init(t_data *data);
 int		ft_put_sprite(t_data *data);
 int		ft_clear_screen(t_data *data);
 int		ft_move(int keycode, t_data *data);
-void	ft_map_read(t_data *data);
+int		ft_map_read(t_data *data);
 void	ft_exitpoint(int *spawnpoint, char **maps);
-void	ft_objpoint(int *spawnpoint, char **maps);
+void	ft_objpoint(t_data *data);
 void	ft_putnbr(int nb);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dedme <dedme@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 19:54:13 by dedme             #+#    #+#             */
-/*   Updated: 2025/02/28 19:05:21 by dedme            ###   ########.fr       */
+/*   Updated: 2025/03/18 06:27:33 by dedme            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,23 +60,19 @@ void	ft_spawnpoint(int *spawnpoint, char **maps)
 	}
 }
 
-void	ft_objpoint(int *objpoint, char **maps)
+void	ft_objpoint(t_data *data)
 {
 	int	x;
 	int	y;
 
 	x = 0;
 	y = 0;
-	while (maps[y])
+	while (y < data->map_info.height)
 	{
-		while (maps[y][x])
+		while (data->map_info.maps[y][x])
 		{
-			if (maps[y][x] == 'C')
-			{
-				objpoint[0] = x;
-				objpoint[1] = y;
-				return ;
-			}
+			if (data->map_info.maps[y][x] == 'C')
+				data->player.obj++;
 			x++;
 		}
 		x = 0;

@@ -21,7 +21,7 @@ OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) Makefile
 	@echo "\033[32m scrs compiled \033[0m"
 	@$(CC) $(CFLAGS) $(OBJ) $(MLX_FLAGS) -o $(NAME)
 	@echo "\033[32m so_long created \033[0m"
