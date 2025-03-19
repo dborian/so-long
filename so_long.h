@@ -6,7 +6,7 @@
 /*   By: dedme <dedme@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 16:21:42 by dedme             #+#    #+#             */
-/*   Updated: 2025/03/18 11:14:39 by dedme            ###   ########.fr       */
+/*   Updated: 2025/03/19 09:50:56 by dedme            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,6 @@ int		ft_map_read(t_data *data);
 void	ft_exitpoint(int *spawnpoint, char **maps);
 void	ft_objpoint(t_data *data);
 void	ft_putnbr(int nb);
+int		ft_check(t_data *data);
 
 #endif
