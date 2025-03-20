@@ -6,7 +6,7 @@
 /*   By: dedme <dedme@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 01:12:39 by dedme             #+#    #+#             */
-/*   Updated: 2025/03/19 09:50:31 by dedme            ###   ########.fr       */
+/*   Updated: 2025/03/20 14:29:13 by dedme            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,24 +41,30 @@ int	ft_free_map(t_data *data)
 	while (y < data->map_info.height)
 		free(data->map_info.maps[y++]);
 	free(data->map_info.maps);
-	return (1);
+	if (data->error == 0)
+		error_write_return(3, data);
+	return (data->error);
 }
 
 int	ft_map_read(t_data *data)
 {
 	char	*buf;
 	int		file_len;
-	
+
 	buf = NULL;
 	file_len = get_file_len(data->map_info.map_name);
+	if (file_len == 0)
+		return (error_write_return(2, data));
 	buf = malloc(sizeof(char) * file_len + 1);
 	if (!buf)
-		return (1);
+		return (error_write_return(3, data));
 	read_file(data->map_info.map_name, buf, file_len - 1);
+	if (!buf)
+		printf("test\n\n\n\n\n");
 	ft_map_size(data, buf);
 	data->map_info.maps = ft_split(buf, '\n');
-	if (ft_check(data) == 1)
-		return(ft_free_map(data));
+	if (ft_check(data) != 0)
+		return (ft_free_map(data));
 	ft_spawnpoint(&data->map_info.spawnpoint[0], data->map_info.maps);
 	ft_exitpoint(&data->map_info.exitpoint[0], data->map_info.maps);
 	ft_objpoint(data);

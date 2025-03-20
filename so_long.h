@@ -6,7 +6,7 @@
 /*   By: dedme <dedme@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 16:21:42 by dedme             #+#    #+#             */
-/*   Updated: 2025/03/19 09:50:56 by dedme            ###   ########.fr       */
+/*   Updated: 2025/03/20 11:44:14 by dedme            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ typedef struct s_data
 	t_player	player;
 	t_map		map_info;
 	t_all_text	all_img;
+	int			error;
 }				t_data;
 
 int		open_file(char *path_file);
@@ -96,5 +97,5 @@ void	ft_exitpoint(int *spawnpoint, char **maps);
 void	ft_objpoint(t_data *data);
 void	ft_putnbr(int nb);
 int		ft_check(t_data *data);
-
+int		error_write_return(int error_code, t_data *data);
 #endif

@@ -6,7 +6,7 @@
 /*   By: dedme <dedme@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 00:47:21 by dedme             #+#    #+#             */
-/*   Updated: 2025/03/18 06:24:40 by dedme            ###   ########.fr       */
+/*   Updated: 2025/03/20 14:28:39 by dedme            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ int	ft_move(int keycode, t_data *data)
 	if (data->map_info.maps[data->player.xy[1]][data->player.xy[0]] == 'C')
 	{
 		data->map_info.maps[data->player.xy[1]][data->player.xy[0]] = '0';
-		// printf("player[%d][%d]\n", data->player.xy[1], data->player.xy[0]);
 		data->player.obj--;
 	}
 	ft_put_sprite(data);
@@ -61,6 +60,5 @@ int	ft_move(int keycode, t_data *data)
 		close_window(data);
 		write(1, "SUCCESS GG\n", 11);
 	}
-	// printf("obj = %c\n", data->map_info.maps[8][9]);
 	return (0);
 }

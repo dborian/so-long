@@ -6,30 +6,30 @@
 /*   By: dedme <dedme@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 09:49:48 by dedme             #+#    #+#             */
-/*   Updated: 2025/03/19 11:23:37 by dedme            ###   ########.fr       */
+/*   Updated: 2025/03/20 14:36:57 by dedme            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-static int	ft_check_case(t_data *data)
+static int	ft_check_case(t_data *data, char **map)
 {
-	t_check check;
-	int	xy[2];
+	t_check	check;
+	int		xy[2];
 
 	xy[0] = 0;
 	xy[1] = 0;
 	while (xy[1] < data->map_info.height)
 	{
-		while (data->map_info.maps[xy[1]][xy[0]])
+		while (map[xy[1]][xy[0]])
 		{
-			if (data->map_info.maps[xy[1]][xy[0]] == 'E')
+			if (map[xy[1]][xy[0]] == 'E')
 				check.exit = 1;
-			else if (data->map_info.maps[xy[1]][xy[0]] == 'P')
+			else if (map[xy[1]][xy[0]] == 'P')
 				check.spawn = 1;
-			else if (data->map_info.maps[xy[1]][xy[0]] == 'C')
+			else if (map[xy[1]][xy[0]] == 'C')
 				check.obj = 1;
-			else if (data->map_info.maps[xy[1]][xy[0]] != '0' && data->map_info.maps[xy[1]][xy[0]] != '1')
+			else if (map[xy[1]][xy[0]] != '0' && map[xy[1]][xy[0]] != '1')
 				return (1);
 			xy[0]++;
 		}
@@ -54,7 +54,7 @@ static int	ft_check_lenght(t_data *data)
 	return (0);
 }
 
-int ft_check_wall(t_data *data)
+int	ft_check_wall(t_data *data)
 {
 	int	y;
 	int	i;
@@ -63,7 +63,8 @@ int ft_check_wall(t_data *data)
 	y = 1;
 	while (y < data->map_info.height)
 	{
-		if (data->map_info.maps[y][data->map_info.widht-1] != '1' || data->map_info.maps[y][0] != '1')
+		if (data->map_info.maps[y][data->map_info.widht - 1] != '1' || \
+			data->map_info.maps[y][0] != '1')
 			return (1);
 		y++;
 	}
@@ -71,17 +72,17 @@ int ft_check_wall(t_data *data)
 		if (data->map_info.maps[0][i++] != '1')
 			return (1);
 	i = 0;
-	while (data->map_info.maps[data->map_info.height-1][i])
-		if (data->map_info.maps[data->map_info.height-1][i++] != '1')
+	while (data->map_info.maps[data->map_info.height - 1][i])
+		if (data->map_info.maps[data->map_info.height - 1][i++] != '1')
 			return (1);
 	return (0);
 }
 
 int	ft_check_ber(char *str)
 {
-	int	i;
-	int	j;
-	char *set;
+	int		i;
+	int		j;
+	char	*set;
 
 	set = "ber";
 	i = 0;
@@ -103,13 +104,13 @@ int	ft_check_ber(char *str)
 
 int	ft_check(t_data *data)
 {
-	if(ft_check_case(data) == 1)
-		return (1);
+	if (ft_check_case(data, data->map_info.maps) == 1)
+		return (error_write_return(4, data));
 	else if (ft_check_lenght(data) == 1)
-		return (1);
+		return (error_write_return(4, data));
 	else if (ft_check_wall(data) == 1)
-		return (1);
-	else if(ft_check_ber(data->map_info.map_name) == 1)
-		return (1);
+		return (error_write_return(4, data));
+	else if (ft_check_ber(data->map_info.map_name) == 1)
+		return (error_write_return(4, data));
 	return (0);
 }

@@ -16,7 +16,8 @@ SRC = \
 	map_read/read_map_from_file.c \
 	map_read/check_map.c \
 	utils/parse_utils.c \
-	utils/char_utils.c 
+	utils/char_utils.c \
+	utils/prog_error.c
 
 OBJ = $(SRC:.c=.o)
 

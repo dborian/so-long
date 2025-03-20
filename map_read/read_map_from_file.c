@@ -6,7 +6,7 @@
 /*   By: dedme <dedme@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 19:48:04 by dedme             #+#    #+#             */
-/*   Updated: 2025/02/24 01:11:47 by dedme            ###   ########.fr       */
+/*   Updated: 2025/03/20 12:04:54 by dedme            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ int	open_file(char *path_file)
 
 	fd = open(path_file, O_RDONLY);
 	if (fd == -1)
-	{
-		write(1, "Error opening the file\n", 23);
-		return (0);
-	}
+		return (1);
 	return (fd);
 }
 
@@ -35,14 +32,13 @@ int	get_file_len(char *path_file)
 	nb_read = -1;
 	count = 0;
 	fd = open_file(path_file);
+	if (fd == 1)
+		return (0);
 	while (nb_read != 0)
 	{
 		nb_read = read(fd, buf, 1);
 		if (nb_read == -1)
-		{
-			write (2, "Error can't read the file\n", 26);
 			return (0);
-		}
 		count++;
 	}
 	close (fd);
@@ -62,10 +58,7 @@ char	*read_file(char *path_file, char *buf, int file_len)
 	{
 		nb_read = read(fd, buf, file_len);
 		if (nb_read == -1)
-		{
-			write (2, "Error can't read the file\n", 26);
 			return (NULL);
-		}
 		buf[nb_read] = '\0';
 	}
 	close (fd);
