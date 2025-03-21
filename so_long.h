@@ -6,7 +6,7 @@
 /*   By: dedme <dedme@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 16:21:42 by dedme             #+#    #+#             */
-/*   Updated: 2025/03/20 11:44:14 by dedme            ###   ########.fr       */
+/*   Updated: 2025/03/21 11:27:07 by dedme            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 typedef struct s_check
 {
 	int	exit;
-	int	spawn;
 	int	obj;
+	int	spawn;
 }				t_check;
 
 typedef struct s_map
@@ -43,6 +43,7 @@ typedef struct s_map
 	int		exitpoint[2];
 	int		obj;
 	char	**maps;
+	char	**maps_copy;
 }				t_map;
 
 typedef struct s_text
@@ -59,6 +60,7 @@ typedef struct s_all_text
 	t_text	wall;
 	t_text	exit;
 	t_text	obj;
+	t_text	mush;
 }				t_all_text;
 
 typedef struct s_player
@@ -98,4 +100,7 @@ void	ft_objpoint(t_data *data);
 void	ft_putnbr(int nb);
 int		ft_check(t_data *data);
 int		error_write_return(int error_code, t_data *data);
+int		ft_fluid_fill(t_data *data);
+int		ft_free_map(int error_code, t_data *data);
+
 #endif

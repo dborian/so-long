@@ -15,6 +15,7 @@ SRC = \
 	map_read/map_read.c \
 	map_read/read_map_from_file.c \
 	map_read/check_map.c \
+	map_read/ft_fluid_fill.c \
 	utils/parse_utils.c \
 	utils/char_utils.c \
 	utils/prog_error.c

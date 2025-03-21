@@ -6,7 +6,7 @@
 /*   By: dedme <dedme@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 09:49:48 by dedme             #+#    #+#             */
-/*   Updated: 2025/03/20 14:36:57 by dedme            ###   ########.fr       */
+/*   Updated: 2025/03/21 11:25:44 by dedme            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static int	ft_check_lenght(t_data *data)
 	return (0);
 }
 
-int	ft_check_wall(t_data *data)
+static int	ft_check_wall(t_data *data)
 {
 	int	y;
 	int	i;
@@ -78,7 +78,7 @@ int	ft_check_wall(t_data *data)
 	return (0);
 }
 
-int	ft_check_ber(char *str)
+static int	ft_check_ber(char *str)
 {
 	int		i;
 	int		j;

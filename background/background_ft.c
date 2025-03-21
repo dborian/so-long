@@ -6,7 +6,7 @@
 /*   By: dedme <dedme@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 00:41:32 by dedme             #+#    #+#             */
-/*   Updated: 2025/03/18 06:16:53 by dedme            ###   ########.fr       */
+/*   Updated: 2025/03/21 11:15:51 by dedme            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,17 @@
 static int	ft_choose_img(t_data *data, int x, int y)
 {
 	if (data->map_info.maps[y][x] == '0' || data->map_info.maps[y][x] == 'P')
-		mlx_put_image_to_window(data->mlx, data->win, \
-			data->all_img.background.img, x * 64, y * 64);
+	{
+		if (data->map_info.maps[y - 1][x] == '1' && \
+				data->map_info.maps[y + 1][x] == '1' && \
+					data->map_info.maps[y][x + 1] == '1' && \
+						data->map_info.maps[y][x - 1] == '1')
+			mlx_put_image_to_window(data->mlx, data->win, \
+				data->all_img.mush.img, x * 64, y * 64);
+		else
+			mlx_put_image_to_window(data->mlx, data->win, \
+				data->all_img.background.img, x * 64, y * 64);
+	}
 	else if (data->map_info.maps[y][x] == '1')
 		mlx_put_image_to_window(data->mlx, data->win, \
 			data->all_img.wall.img, x * 64, y * 64);

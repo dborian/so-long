@@ -6,7 +6,7 @@
 /*   By: dedme <dedme@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 00:24:25 by dedme             #+#    #+#             */
-/*   Updated: 2025/03/12 06:45:53 by dedme            ###   ########.fr       */
+/*   Updated: 2025/03/21 11:06:54 by dedme            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,15 @@ int	close_window(t_data *data)
 	mlx_destroy_image(data->mlx, data->all_img.wall.img);
 	mlx_destroy_image(data->mlx, data->all_img.obj.img);
 	mlx_destroy_image(data->mlx, data->all_img.exit.img);
+	mlx_destroy_image(data->mlx, data->all_img.mush.img);
 	mlx_loop_end(data->mlx);
 	while (y < data->map_info.height)
+	{
+		free(data->map_info.maps_copy[y]);
 		free(data->map_info.maps[y++]);
+	}
 	free(data->map_info.maps);
+	free(data->map_info.maps_copy);
 	return (0);
 }
 

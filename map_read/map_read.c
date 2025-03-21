@@ -6,13 +6,13 @@
 /*   By: dedme <dedme@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 01:12:39 by dedme             #+#    #+#             */
-/*   Updated: 2025/03/20 14:29:13 by dedme            ###   ########.fr       */
+/*   Updated: 2025/03/21 11:28:07 by dedme            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	ft_map_size(t_data *data, char *buf)
+static void	ft_map_size(t_data *data, char *buf)
 {
 	int	x;
 	int	y;
@@ -33,16 +33,19 @@ void	ft_map_size(t_data *data, char *buf)
 	data->map_info.widht = x;
 }
 
-int	ft_free_map(t_data *data)
+int	ft_free_map(int error_code, t_data *data)
 {
 	int		y;
 
 	y = 0;
 	while (y < data->map_info.height)
+	{
+		free(data->map_info.maps_copy[y]);
 		free(data->map_info.maps[y++]);
+	}
 	free(data->map_info.maps);
-	if (data->error == 0)
-		error_write_return(3, data);
+	free(data->map_info.maps_copy);
+	error_write_return(error_code, data);
 	return (data->error);
 }
 
@@ -59,14 +62,16 @@ int	ft_map_read(t_data *data)
 	if (!buf)
 		return (error_write_return(3, data));
 	read_file(data->map_info.map_name, buf, file_len - 1);
-	if (!buf)
-		printf("test\n\n\n\n\n");
 	ft_map_size(data, buf);
 	data->map_info.maps = ft_split(buf, '\n');
+	data->map_info.maps_copy = ft_split(buf, '\n');
+	free(buf);
 	if (ft_check(data) != 0)
-		return (ft_free_map(data));
+		return (ft_free_map(4, data));
 	ft_spawnpoint(&data->map_info.spawnpoint[0], data->map_info.maps);
 	ft_exitpoint(&data->map_info.exitpoint[0], data->map_info.maps);
 	ft_objpoint(data);
+	if (ft_fluid_fill(data) != 0)
+		return (ft_free_map(4, data));
 	return (0);
 }
