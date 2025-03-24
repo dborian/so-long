@@ -6,12 +6,22 @@
 /*   By: dedme <dedme@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 11:36:55 by dedme             #+#    #+#             */
-/*   Updated: 2025/03/20 14:37:27 by dedme            ###   ########.fr       */
+/*   Updated: 2025/03/24 16:16:24 by dedme            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
+int	error_write_return2(int error_code, t_data *data)
+{
+	if (error_code == 5)
+	{
+		write(1, "Error\ncan not access asset\n", 24);
+		data->error = 5;
+		return (5);
+	}
+	return (0);
+}
 int	error_write_return(int error_code, t_data *data)
 {
 	if (error_code == 1)
@@ -37,5 +47,6 @@ int	error_write_return(int error_code, t_data *data)
 		data->error = 4;
 		return (4);
 	}
+	error_write_return2(error_code, data);
 	return (0);
 }

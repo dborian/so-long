@@ -6,7 +6,7 @@
 /*   By: dedme <dedme@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 19:43:09 by dedme             #+#    #+#             */
-/*   Updated: 2025/03/20 11:43:56 by dedme            ###   ########.fr       */
+/*   Updated: 2025/03/24 16:16:00 by dedme            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,11 @@ int	main(int argc, char **argv)
 		return (data.error);
 	data.player.xy[0] = data.map_info.spawnpoint[0];
 	data.player.xy[1] = data.map_info.spawnpoint[1];
-	windows_init(&data);
+	if (windows_init(&data) == 1)
+	{
+		mlx_destroy_display(data.mlx);
+		return (data.error);
+	}
 	mlx_hook(data.win, 2, 1L << 0, ft_move, &data);
 	mlx_hook(data.win, 17, 0, close_window, &data);
 	mlx_loop(data.mlx);

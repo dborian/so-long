@@ -6,7 +6,7 @@
 /*   By: dedme <dedme@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 16:21:42 by dedme             #+#    #+#             */
-/*   Updated: 2025/03/21 11:27:07 by dedme            ###   ########.fr       */
+/*   Updated: 2025/03/24 16:12:42 by dedme            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,6 @@ int		ft_check(t_data *data);
 int		error_write_return(int error_code, t_data *data);
 int		ft_fluid_fill(t_data *data);
 int		ft_free_map(int error_code, t_data *data);
+void	destroy_text(t_data *data);
 
 #endif

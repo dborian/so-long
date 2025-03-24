@@ -6,13 +6,13 @@
 /*   By: dedme <dedme@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 19:48:04 by dedme             #+#    #+#             */
-/*   Updated: 2025/03/20 12:04:54 by dedme            ###   ########.fr       */
+/*   Updated: 2025/03/24 16:32:36 by dedme            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	open_file(char *path_file)
+int	 open_file(char *path_file)
 {
 	int	fd;
 
@@ -70,6 +70,8 @@ int	ft_strlen(char *str)
 	int	i;
 
 	i = 0;
+	if (!str)
+		return (0);
 	while (str[i] && str[i] != '\n')
 		i++;
 	return (i);

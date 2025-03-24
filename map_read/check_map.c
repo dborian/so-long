@@ -6,7 +6,7 @@
 /*   By: dedme <dedme@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 09:49:48 by dedme             #+#    #+#             */
-/*   Updated: 2025/03/21 11:25:44 by dedme            ###   ########.fr       */
+/*   Updated: 2025/03/24 15:55:31 by dedme            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,8 @@ static int	ft_check_lenght(t_data *data)
 
 	y = 0;
 	while (y < data->map_info.height)
-	{
 		if (ft_strlen(data->map_info.maps[y++]) != data->map_info.widht)
 			return (1);
-	}
 	return (0);
 }
 
@@ -104,13 +102,13 @@ static int	ft_check_ber(char *str)
 
 int	ft_check(t_data *data)
 {
-	if (ft_check_case(data, data->map_info.maps) == 1)
-		return (error_write_return(4, data));
-	else if (ft_check_lenght(data) == 1)
-		return (error_write_return(4, data));
+	if (ft_check_lenght(data) == 1)
+		return (1);
+	else if (ft_check_case(data, data->map_info.maps) == 1)
+		return (1);
 	else if (ft_check_wall(data) == 1)
-		return (error_write_return(4, data));
+		return (1);
 	else if (ft_check_ber(data->map_info.map_name) == 1)
-		return (error_write_return(4, data));
+		return (1);
 	return (0);
 }
