@@ -6,7 +6,7 @@
 /*   By: dedme <dedme@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 19:43:09 by dedme             #+#    #+#             */
-/*   Updated: 2025/03/24 16:16:00 by dedme            ###   ########.fr       */
+/*   Updated: 2025/04/04 18:04:09 by dedme            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(int argc, char **argv)
 	if (windows_init(&data) == 1)
 	{
 		mlx_destroy_display(data.mlx);
+		free(data.mlx);
 		return (data.error);
 	}
 	mlx_hook(data.win, 2, 1L << 0, ft_move, &data);
