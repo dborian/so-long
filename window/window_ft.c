@@ -6,13 +6,13 @@
 /*   By: dedme <dedme@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 00:24:25 by dedme             #+#    #+#             */
-/*   Updated: 2025/04/04 18:02:16 by dedme            ###   ########.fr       */
+/*   Updated: 2025/04/10 03:22:19 by dedme            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void destroy_text(t_data *data)
+void	destroy_text(t_data *data)
 {
 	if (data->all_img.sprite.img)
 		mlx_destroy_image(data->mlx, data->all_img.sprite.img);

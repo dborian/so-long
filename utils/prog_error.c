@@ -6,7 +6,7 @@
 /*   By: dedme <dedme@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 11:36:55 by dedme             #+#    #+#             */
-/*   Updated: 2025/04/04 18:03:08 by dedme            ###   ########.fr       */
+/*   Updated: 2025/04/10 03:21:31 by dedme            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	error_write_return2(int error_code, t_data *data)
 	}
 	return (0);
 }
+
 int	error_write_return(int error_code, t_data *data)
 {
 	if (error_code == 1)

@@ -6,13 +6,13 @@
 /*   By: dedme <dedme@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 19:48:04 by dedme             #+#    #+#             */
-/*   Updated: 2025/03/24 16:32:36 by dedme            ###   ########.fr       */
+/*   Updated: 2025/04/10 03:21:15 by dedme            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	 open_file(char *path_file)
+int	open_file(char *path_file)
 {
 	int	fd;
 
